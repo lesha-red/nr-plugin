@@ -246,12 +246,12 @@ chmod a+rx /home/$SUDO_USER/.config/autostart
 ln -s /usr/share/applications/nr-plugin.desktop /home/$SUDO_USER/.config/autostart/nr-plugin.desktop 2>/dev/null
 
 FINISH_MSG=$(cat <<EOF
-$PRODUCT_NAME $VERSION был успешно установлен и добавлен в автозапуск для пользователя $SUDO_USER.
+$PRODUCT_NAME $VERSION был успешно установлен и добавлен в автозапуск для пользователя \"$SUDO_USER\".
 
 Ручной запуск программы:
-- nr-plugin
+$ nr-plugin
 ИЛИ
-- \"Плагин ГИС НР\" (\"GIS NR Plugin\") в списке программ Unity
+\"Плагин ГИС НР\" (\"GIS NR Plugin\") в списке программ Unity
 
 Для удаления $PRODUCT_NAME $VERSION запустите: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)" -u -u
 EOF
