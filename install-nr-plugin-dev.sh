@@ -249,7 +249,7 @@ FINISH_MSG=$(cat <<EOF
 $PRODUCT_NAME $VERSION был успешно установлен и добавлен в автозапуск для пользователя \"$SUDO_USER\".
 
 Ручной запуск программы:
-$ nr-plugin
+\$ nr-plugin
 ИЛИ
 \"Плагин ГИС НР\" (\"GIS NR Plugin\") в списке программ Unity
 
