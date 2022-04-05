@@ -151,8 +151,8 @@ if [[ \$(id -u) == 0 ]]; then
     exit 1
 fi
 
-if [ ! -d ~/.nr_plugin ]; then
-  mkdir -p ~/.nr_plugin
+if [ ! -d ~/.nr_plugin/logs ]; then
+  mkdir -p ~/.nr_plugin/logs
 fi
 
 if [ -p ~/.nr_plugin/xdg-pipe ]; then
