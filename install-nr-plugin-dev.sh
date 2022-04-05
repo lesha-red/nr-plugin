@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=4.3.0.0
+VERSION=4.3.0.1
 DOCKER_IMAGE_NAME="leshared/nr-plugin-dev:$VERSION"
 PRODUCT_NAME="Плагин ГИС НР (DEV)"
 SILENT="no"
@@ -99,7 +99,7 @@ if [ -z $WHICH_DOCKER ]; then
   halt_error "ОШИБКА! Docker не установлен (в Ubuntu/Debian: sudo apt install docker.io)"
 fi
 
-groupadd docker
+groupadd docker 2>/dev/null
 usermod -aG docker $SUDO_USER
 chmod 666 /var/run/docker.sock
 
@@ -161,7 +161,7 @@ fi
 
 mkfifo ~/.nr_plugin/xdg-pipe
 
-killall nr-plugin-xdg-open
+killall nr-plugin-xdg-open 2>/dev/null
 
 nohup /usr/bin/nr-plugin-xdg-open >/dev/null 2>&1 &
 echo \$! > ~/.nr_plugin/nr-plugin-xdg-open.pid
