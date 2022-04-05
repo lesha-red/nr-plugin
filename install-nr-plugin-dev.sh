@@ -101,7 +101,7 @@ fi
 
 groupadd docker
 usermod -aG docker $SUDO_USER
-newgrp docker
+chmod 666 /var/run/docker.sock
 
 WHICH_XDG_OPEN=$(which xdg-open)
 if [ -z $WHICH_XDG_OPEN ]; then
