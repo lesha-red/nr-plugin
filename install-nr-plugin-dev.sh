@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION=4.3.0.0
-DOCKER_IMAGE_NAME="leshared/nr-plugin-dev:$DOCKER_VERSION"
+DOCKER_IMAGE_NAME="leshared/nr-plugin-dev:$VERSION"
 PRODUCT_NAME="Плагин ГИС НР (DEV)"
 SILENT="no"
 UNINSTALL="no"
@@ -52,7 +52,7 @@ if [ -z $WHICH_ZENITY ]; then
 fi
 
 if [[ $(id -u) != 0 ]]; then
-    halt_error "Запустите программу под администратором (sudo $0)"
+    halt_error 'Запустите программу под администратором: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)"'
 fi
 
 if [ $UNINSTALL = "yes" ]; then
@@ -248,7 +248,7 @@ $PRODUCT_NAME $VERSION был успешно установлен
 ИЛИ
 - \"Плагин ГИС НР\" (\"GIS NR Plugin\") в списке программ Unity
 
-Для удаления $PRODUCT_NAME запустите: sudo $0 -u
+Для удаления $PRODUCT_NAME запустите: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)" -u -u
 EOF
 )
 
@@ -256,7 +256,7 @@ info "$FINISH_MSG"
 
 if [[ -z $DBUS_SESSION_BUS_ADDRESS ]]; then
     pgrep "gnome-session" -u "$SUDO_USER" | while read -r line; do
-        DBUS_EXP=$(cat /proc/$line/environ | grep -z "^DBUS_SESSION_BUS_ADDRESS=")
+        DBUS_EXP=$(cat /proc/$line/environ 2>/dev/null | grep -z "^DBUS_SESSION_BUS_ADDRESS=" 2>/dev/null)
         echo export "$DBUS_EXP" > ~/.exports.sh
         break
     done
@@ -270,6 +270,6 @@ fi
 
 mkdir -p /home/$SUDO_USER/.config/autostart
 chmod a+rx /home/$SUDO_USER/.config/autostart
-ln -s /usr/share/applications/nr-plugin.desktop /home/$SUDO_USER/.config/autostart/nr-plugin.desktop 
+ln -s /usr/share/applications/nr-plugin.desktop /home/$SUDO_USER/.config/autostart/nr-plugin.desktop 2>/dev/null
 
 sudo -u $SUDO_USER -E gtk-launch nr-plugin
