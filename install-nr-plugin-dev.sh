@@ -246,7 +246,7 @@ chmod a+rx /home/$SUDO_USER/.config/autostart
 ln -s /usr/share/applications/nr-plugin.desktop /home/$SUDO_USER/.config/autostart/nr-plugin.desktop 2>/dev/null
 
 FINISH_MSG=$(cat <<EOF
-$PRODUCT_NAME $VERSION был успешно установлен и добавлен в автозапуск для пользователя \"$SUDO_USER\".
+$PRODUCT_NAME $VERSION был успешно установлен и добавлен в автозагрузку для пользователя \"$SUDO_USER\".
 
 Ручной запуск программы:
 \$ nr-plugin
