@@ -277,4 +277,4 @@ if [[ -z $DBUS_SESSION_BUS_ADDRESS ]]; then
     fi
 fi
 
-sudo -u $SUDO_USER -E gtk-launch nr-plugin
+sudo -u $SUDO_USER DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS gtk-launch nr-plugin
