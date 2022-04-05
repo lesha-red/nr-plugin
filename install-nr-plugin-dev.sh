@@ -52,7 +52,7 @@ if [ -z $WHICH_ZENITY ]; then
 fi
 
 if [[ $(id -u) != 0 ]]; then
-    halt_error 'Запустите программу под администратором: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)"'
+    halt_error 'Запустите программу под администратором: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/HEAD/install-nr-plugin-dev.sh)"'
 fi
 
 if [ $UNINSTALL = "yes" ]; then
@@ -253,7 +253,7 @@ $PRODUCT_NAME $VERSION был успешно установлен и добав�
 ИЛИ
 \"Плагин ГИС НР\" (\"GIS NR Plugin\") в списке программ Unity
 
-Для удаления $PRODUCT_NAME $VERSION запустите: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)" -u -u
+Для удаления $PRODUCT_NAME $VERSION запустите: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/HEAD/install-nr-plugin-dev.sh)" -u -u
 EOF
 )
 
