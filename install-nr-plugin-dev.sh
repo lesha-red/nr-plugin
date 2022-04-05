@@ -240,15 +240,20 @@ EOF
 [ -d "/opt/yandex/browser/Extensions" ] && echo $CHROME_EXTENSION_JSON > /opt/yandex/browser/Extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json 
 [ -d "/opt/google/chrome/extensions" ] && echo $CHROME_EXTENSION_JSON > /opt/google/chrome/extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json 
 
-FINISH_MSG=$(cat <<EOF
-$PRODUCT_NAME $VERSION был успешно установлен
+# add plugin to autostart
+mkdir -p /home/$SUDO_USER/.config/autostart
+chmod a+rx /home/$SUDO_USER/.config/autostart
+ln -s /usr/share/applications/nr-plugin.desktop /home/$SUDO_USER/.config/autostart/nr-plugin.desktop 2>/dev/null
 
-Запуск программы:
+FINISH_MSG=$(cat <<EOF
+$PRODUCT_NAME $VERSION был успешно установлен и добавлен в автозапуск для пользователя $SUDO_USER.
+
+Ручной запуск программы:
 - nr-plugin
 ИЛИ
 - \"Плагин ГИС НР\" (\"GIS NR Plugin\") в списке программ Unity
 
-Для удаления $PRODUCT_NAME запустите: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)" -u -u
+Для удаления $PRODUCT_NAME $VERSION запустите: sudo /bin/bash -c "\$(curl -fsSL https://raw.githubusercontent.com/lesha-red/nr-plugin/main/install-nr-plugin-dev.sh)" -u -u
 EOF
 )
 
@@ -267,9 +272,5 @@ if [[ -z $DBUS_SESSION_BUS_ADDRESS ]]; then
       exit 0
     fi
 fi
-
-mkdir -p /home/$SUDO_USER/.config/autostart
-chmod a+rx /home/$SUDO_USER/.config/autostart
-ln -s /usr/share/applications/nr-plugin.desktop /home/$SUDO_USER/.config/autostart/nr-plugin.desktop 2>/dev/null
 
 sudo -u $SUDO_USER -E gtk-launch nr-plugin
