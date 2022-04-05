@@ -59,7 +59,7 @@ if [ $UNINSTALL = "yes" ]; then
   confirm "Вы действительно хотите удалить $PRODUCT_NAME $VERSION?"
   if [ $? == 0 ]; then
     echo "Останавливаем работающие контейнеры Docker"
-    docker ps -q --filter ancestor="$DOCKER_IMAGE_NAME" | xargs -r docker stop
+    docker ps -q --filter name="my-nr-plugin" | xargs -r docker stop
     docker image rm $DOCKER_IMAGE_NAME
     killall nr-plugin-xdg-open
     rm /usr/bin/nr-plugin
@@ -131,7 +131,7 @@ do
 done
 
 echo "Останавливаем работающие контейнеры Docker"
-docker ps -q --filter ancestor="$DOCKER_IMAGE_NAME" | xargs -r docker stop
+docker ps -q --filter name="my-nr-plugin" | xargs -r docker stop
 
 echo "Устанавливаем образ Docker"
 DOCKER_PULL_OUTPUT=$(docker pull $DOCKER_IMAGE_NAME 2>&1 | tee /dev/tty)
@@ -167,7 +167,7 @@ nohup /usr/bin/nr-plugin-xdg-open >/dev/null 2>&1 &
 echo \$! > ~/.nr_plugin/nr-plugin-xdg-open.pid
 
 echo Stopping docker containers
-docker ps -q --filter ancestor="\$DOCKER_IMAGE_NAME" | xargs -r docker stop
+docker ps -q --filter name="my-nr-plugin" | xargs -r docker stop
 
 echo "Started: \$(date)" | tee -a ~/.nr_plugin/logs/stdout_host.txt
 
