@@ -166,6 +166,7 @@ killall nr-plugin-xdg-open
 nohup /usr/bin/nr-plugin-xdg-open >/dev/null 2>&1 &
 echo \$! > ~/.nr_plugin/nr-plugin-xdg-open.pid
 
+echo Stopping docker containers
 docker ps -q --filter ancestor="\$DOCKER_IMAGE_NAME" | xargs -r docker stop
 
 echo "Started: \$(date)" | tee -a ~/.nr_plugin/logs/stdout_host.txt
