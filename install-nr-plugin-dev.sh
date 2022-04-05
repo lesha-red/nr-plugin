@@ -130,11 +130,10 @@ echo "Останавливаем работающие контейнеры Docke
 docker ps -q --filter ancestor="$DOCKER_IMAGE_NAME" | xargs -r docker stop
 
 echo "Устанавливаем образ Docker"
-DOCKER_PULL_OUTPUT=$(docker pull $DOCKER_IMAGE_NAME 2>&1)
+DOCKER_PULL_OUTPUT=$(docker pull $DOCKER_IMAGE_NAME 2>&1 | tee /dev/tty)
 if [ $? != 0 ]; then
   halt_error "Ошибка установки образа Docker: $DOCKER_PULL_OUTPUT"
 fi
-echo $DOCKER_PULL_OUTPUT
 
 cat > /usr/bin/nr-plugin <<EOF
 #!/bin/bash
