@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=4.3.0.2
+VERSION=4.3.0.3
 DOCKER_IMAGE_NAME="leshared/nr-plugin-dev:$VERSION"
 PRODUCT_NAME="Плагин ГИС НР (DEV)"
 SILENT="no"
