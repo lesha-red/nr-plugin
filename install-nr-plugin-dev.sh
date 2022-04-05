@@ -99,7 +99,9 @@ if [ -z $WHICH_DOCKER ]; then
   halt_error "ОШИБКА! Docker не установлен (в Ubuntu/Debian: sudo apt install docker.io)"
 fi
 
-chmod 666 /var/run/docker.sock
+groupadd docker
+usermod -aG docker $SUDO_USER
+newgrp docker
 
 WHICH_XDG_OPEN=$(which xdg-open)
 if [ -z $WHICH_XDG_OPEN ]; then
