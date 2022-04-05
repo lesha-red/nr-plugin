@@ -79,7 +79,7 @@ WELCOME_MSG=$(cat <<EOF
 
 Перед установкой $PRODUCT_NAME $VERSION убедитесь, что установлены следующие компоненты:
 
-1. Docker (в Ubuntu/Debian: sudo apt install docker-io)
+1. Docker (в Ubuntu/Debian: sudo apt install docker.io)
 2. xdg-utils (в Ubuntu/Debian: sudo apt install xdg-utils)
 3. gnome-terminal (в Ubuntu/Debian: sudo apt install gnome-terminal)
 4. КриптоПро CSP (https://cryptopro.ru/products/csp/downloads#latest_csp50r3_linux)
@@ -96,7 +96,7 @@ fi
 
 WHICH_DOCKER=$(which docker)
 if [ -z $WHICH_DOCKER ]; then
-  halt_error "ОШИБКА! Docker не установлен (в Ubuntu/Debian: sudo apt install docker-io)"
+  halt_error "ОШИБКА! Docker не установлен (в Ubuntu/Debian: sudo apt install docker.io)"
 fi
 
 WHICH_XDG_OPEN=$(which xdg-open)
