@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=4.3.0.4
+VERSION=4.3.0.0
 DOCKER_IMAGE_NAME="leshared/nr-plugin-dev:$VERSION"
 PRODUCT_NAME="Плагин ГИС НР (DEV)"
 SILENT="no"
@@ -141,6 +141,7 @@ fi
 
 cat > /usr/bin/nr-plugin <<EOF
 #!/bin/bash
+#sudo sysctl -w kernel.core_pattern="|/usr/bin/tee -a /tmp/core-%e.%p"
 
 DOCKER_IMAGE_NAME="$DOCKER_IMAGE_NAME"
 
