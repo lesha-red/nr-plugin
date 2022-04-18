@@ -1,4 +1,4 @@
-#!/bin/bash
+﻿#!/bin/bash
 
 VERSION=4.3.0.0
 DOCKER_IMAGE_NAME="leshared/nr-plugin-dev:$VERSION"
