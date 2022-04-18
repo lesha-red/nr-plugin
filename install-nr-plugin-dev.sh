@@ -190,6 +190,7 @@ docker run \
   -e DISPLAY=\$DISPLAY \
   -e TZ=\$(cat /etc/timezone) \
   -e DBUS_SESSION_BUS_ADDRESS=\$DBUS_SESSION_BUS_ADDRESS \
+  -e HTTP_PROXY=\$HTTP_PROXY \
   -e USER=\$USER \
   -u \$(id -u):\$(id -g) \
   --rm \
