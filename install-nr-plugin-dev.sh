@@ -81,7 +81,7 @@ WELCOME_MSG=$(cat <<EOF
 
 1. Docker (в Ubuntu/Debian: sudo apt install docker.io)
 2. xdg-utils (в Ubuntu/Debian: sudo apt install xdg-utils)
-3. gnome-terminal (в Ubuntu/Debian: sudo apt install gnome-terminal)
+3. xterm (в Ubuntu/Debian: sudo apt install xterm)
 4. КриптоПро CSP (https://cryptopro.ru/products/csp/downloads#latest_csp50r3_linux)
 5. КриптоПро ЭЦП SDK (https://cryptopro.ru/products/cades/downloads)
 
@@ -108,9 +108,9 @@ if [ -z $WHICH_XDG_OPEN ]; then
   halt_error "ОШИБКА! xdg-open не установлен (в Ubuntu/Debian: sudo apt install xdg-utils)"
 fi
 
-WHICH_XDG_OPEN=$(which gnome-terminal)
-if [ -z $WHICH_XDG_OPEN ]; then
-  halt_error "ОШИБКА! gnome-terminal не установлен (в Ubuntu/Debian: sudo apt install gnome-terminal)"
+WHICH_XTERM=$(which xterm)
+if [ -z $WHICH_XTERM ]; then
+  halt_error "ОШИБКА! xterm не установлен (в Ubuntu/Debian: sudo apt install xterm)"
 fi
 
 
