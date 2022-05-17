@@ -236,9 +236,12 @@ EOF
 
 chmod a+r /usr/share/applications/nr-plugin.desktop
 
-WHICH_UDD=$(which update-desktop-database)
-if [ ! -z $WHICH_UDD ]; then
-  update-desktop-database
+if [ ! -z $(which update-desktop-database) ]; then
+  update-desktop-database /usr/share/applications
+fi
+
+if [ ! -z $(which xdg-desktop-menu) ]; then
+  xdg-desktop-menu forceupdate
 fi
 
 CHROME_EXTENSION_JSON=$(cat <<EOF
