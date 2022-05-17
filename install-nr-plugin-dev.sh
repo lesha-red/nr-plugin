@@ -236,6 +236,11 @@ EOF
 
 chmod a+r /usr/share/applications/nr-plugin.desktop
 
+WHICH_UDD=$(which update-desktop-database)
+if [ ! -z $WHICH_UDD ]; then
+  update-desktop-database
+fi
+
 CHROME_EXTENSION_JSON=$(cat <<EOF
 {
     "external_update_url": "https://clients2.google.com/service/update2/crx"
