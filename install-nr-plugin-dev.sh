@@ -83,7 +83,8 @@ WELCOME_MSG=$(cat <<EOF
 2. xdg-utils (в Ubuntu/Debian: sudo apt install xdg-utils)
 3. xterm (в Ubuntu/Debian: sudo apt install xterm)
 4. КриптоПро CSP (https://cryptopro.ru/products/csp/downloads#latest_csp50r3_linux)
-5. КриптоПро ЭЦП SDK (https://cryptopro.ru/products/cades/downloads)
+5. Пакеты cprocsp-rdr-gui-gtk-*.deb и cprocsp-cptools-gtk-*.deb из дистрибутива КриптоПро CSP (sudo dpkg -i cprocsp-rdr-gui-gtk-64_5.0.12417-6_amd64.deb cprocsp-cptools-gtk-64_5.0.12417-6_amd64.deb)
+6. КриптоПро ЭЦП SDK (https://cryptopro.ru/products/cades/downloads)
 
 Продолжить?
 EOF
@@ -129,6 +130,11 @@ do
     halt_error "ОШИБКА! КриптоПро ЭЦП SDK не установлен (https://cryptopro.ru/products/cades/downloads)"
   fi
 done
+
+CPGUI_LIB="/opt/cprocsp/lib/amd64/libfgcpui.so"
+if [ ! -f $CPGUI_LIB ] && [ ! -L $CPGUI_LIB ]; then
+    halt_error "ОШИБКА! Пакет cprocsp-rdr-gui-gtk-*.deb не установлен (https://cryptopro.ru/products/csp/downloads#latest_csp50r3_linux)"
+fi
 
 echo "Останавливаем работающие контейнеры Docker"
 docker ps -q --filter name="my-nr-plugin" | xargs -r docker stop
