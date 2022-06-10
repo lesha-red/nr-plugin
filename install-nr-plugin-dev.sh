@@ -257,9 +257,17 @@ CHROME_EXTENSION_JSON=$(cat <<EOF
 EOF
 )
 
-# Install chrome and yandex browser extension
-[ -d "/opt/yandex/browser" ] && mkdir /opt/yandex/browser/Extensions; (exit 0) && echo $CHROME_EXTENSION_JSON > /opt/yandex/browser/Extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json 
-[ -d "/opt/google/chrome" ] && mkdir /opt/google/chrome/extensions; (exit 0) && echo $CHROME_EXTENSION_JSON > /opt/google/chrome/extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json 
+# Install yandex browser extension
+if [ -d "/opt/yandex/browser" ]; then
+  mkdir /opt/yandex/browser/Extensions
+  echo $CHROME_EXTENSION_JSON > /opt/yandex/browser/Extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json
+fi
+
+# Install chrome extension
+if [ -d "/opt/google/chrome" ]; then
+  mkdir /opt/google/chrome/extensions
+  echo $CHROME_EXTENSION_JSON > /opt/google/chrome/extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json
+fi
 
 # add plugin to autostart
 mkdir -p /home/$SUDO_USER/.config/autostart
