@@ -225,7 +225,7 @@ while true; do
   if [[ \${CMD:0:6} == "nr-cmd" ]]; then
     eval "\${CMD:6}"
   elif [ ! -z "\$CMD" ]; then
-    eval "/bin/xdg-open '\$CMD'"
+    eval "xdg-open '\$CMD'"
   fi
   sleep 1
 done
