@@ -211,7 +211,7 @@ cat > /usr/bin/./nr-plugin-xdg-open <<EOF
 #!/bin/bash
 
 mypid=\$\$
-ppids=`pgrep -f "cat /home/lesha/.nr_plugin/xdg-pipe|/usr/bin/nr-plugin-xdg-open"`
+ppids=\`pgrep -f "cat /home/lesha/.nr_plugin/xdg-pipe|/usr/bin/nr-plugin-xdg-open"\`
 for eachppid in \$ppids;
 do
   if [ \$mypid != \$eachppid ]; then
