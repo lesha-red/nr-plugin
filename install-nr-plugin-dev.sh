@@ -268,13 +268,13 @@ EOF
 
 # Install yandex browser extension
 if [ -d "/opt/yandex/browser" ]; then
-  mkdir /opt/yandex/browser/Extensions
+  mkdir /opt/yandex/browser/Extensions 2>/dev/null
   echo $CHROME_EXTENSION_JSON > /opt/yandex/browser/Extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json
 fi
 
 # Install chrome extension
 if [ -d "/opt/google/chrome" ]; then
-  mkdir /opt/google/chrome/extensions
+  mkdir /opt/google/chrome/extensions 2>/dev/null
   echo $CHROME_EXTENSION_JSON > /opt/google/chrome/extensions/cdjkkeofanojcdolaakkckkmfcjejlij.json
 fi
 
