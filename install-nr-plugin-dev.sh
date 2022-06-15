@@ -210,6 +210,15 @@ chmod a+x /usr/bin/nr-plugin
 cat > /usr/bin/./nr-plugin-xdg-open <<EOF
 #!/bin/bash
 
+mypid=\$\$
+ppids=`pgrep -f "cat /home/lesha/.nr_plugin/xdg-pipe|/usr/bin/nr-plugin-xdg-open"`
+for eachppid in \$ppids;
+do
+  if [ \$mypid != \$eachppid ]; then
+    kill \$eachppid
+  fi
+done
+
 while true; do 
   CMD=\$(cat \$HOME/.nr_plugin/xdg-pipe 2>/dev/null)
 
